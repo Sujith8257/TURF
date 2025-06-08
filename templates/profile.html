@@ -1,0 +1,196 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>Garuda Multi Sports Turf</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f2f4f1] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#131612]">
+            <img src="https://wepik.com/api/image/local/156660096/9f15956e-a7e4-4fdb-a469-becfafaf1b33?expires=1749182400&thumb=0&transparent=0&signature=b9d72c7431d37e2902812c45736d32dad7db516588cb2082020a89a6138761f2" alt="KARE Turf Logo" class="h-7 w-auto" />
+            <h2 class="text-[#131612] text-lg font-bold leading-tight tracking-[-0.015em]">Garuda Multi Sports Turf</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#131612] text-sm font-medium leading-normal" href="{{ url_for('home') }}">Home</a>
+              <a class="text-[#131612] text-sm font-medium leading-normal" href="{{ url_for('my_bookings') }}">My Bookings</a>
+              <a class="text-[#131612] text-sm font-medium leading-normal" href="{{ url_for('contact') }}">Contact Us</a>
+            </div>
+            <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#f2f4f1] text-[#131612] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+            >
+              <div class="text-[#131612]" data-icon="Bell" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path
+                    d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"
+                  ></path>
+                </svg>
+              </div>
+            </button>
+            <div
+              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDDIU_HuD-guOZu_lJjqVd4LurEqnS7csecoQXzMG60lpq1aL6tfQ6Gz6pyAS5St948jtmwE6MePGuRI-28rL-hUHuW98dF4ySwYg-eSCKaWJrXTzYBscJj5IKwpooSX3gxUPwStAzrBZvr8zDt5y4p_D7ct6HMNbMbERgvsn0H0fqmKq4uCgX4-Ld_AsF5LXnPmWgLnQZi9IDzDTRgNZYsGvbNHTKJzJLq_giznw9Tuqgm8QYHIFqGn4--XmLdqFGi4e7n6hJgqnc");'
+            ></div>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex p-4 @container">
+              <div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-between @[520px]:items-center">
+                <div class="flex gap-4">
+                  <div
+                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCR53OJc5xaklE3tNUm6mTzoxWyrkIQf8n10Bys8eFtYXn3BxxtrgteIM3SnqWonU1O9LLAgfaLxjG2fxOOXOEACL_yj9lOLpXDcSwXZ2JKyUh_CT5UM-cFqcj0V7yKgkQ0X8TEo5qmdiNbmfFEf_d4oUmzui4SF4kzi67p7Gv6nQoBeattjdZDs6sVRD5sovLlFA0-qfffZwh0_XPs8rGtt2scmQseue7kAD0d7r-N117Xz5p0xhXDNrDJ4u5VI-x4rd4iUeucOI4");'
+                  ></div>
+                  <div class="flex flex-col justify-center" id="profile-info-view">
+                    <p class="text-[#131612] text-[22px] font-bold leading-tight tracking-[-0.015em]" id="profileName">Sophia Clark</p>
+                    <p class="text-[#6f816a] text-base font-normal leading-normal" id="profileMember">Member since 2022</p>
+                    <p class="text-[#6f816a] text-base font-normal leading-normal" id="profileEmail">sophia.clark@email.com</p>
+                  </div>
+                  <form class="flex flex-col justify-center gap-2" id="profile-info-edit" style="display:none;">
+                    <input id="editName" class="border rounded px-2 py-1 text-base font-bold" type="text" value="Sophia Clark" />
+                    <input id="editEmail" class="border rounded px-2 py-1 text-base" type="email" value="sophia.clark@email.com" />
+                  </form>
+                </div>
+                <button
+                  id="editProfileBtn"
+                  class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f2f4f1] text-[#131612] text-sm font-bold leading-normal tracking-[0.015em] w-full max-w-[480px] @[480px]:w-auto"
+                >
+                  <span class="truncate">Edit Profile</span>
+                </button>
+                <button
+                  id="saveProfileBtn"
+                  style="display:none;"
+                  class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#8cd279] text-[#131612] text-sm font-bold leading-normal tracking-[0.015em] w-full max-w-[480px] @[480px]:w-auto"
+                >
+                  <span class="truncate">Save</span>
+                </button>
+              </div>
+            </div>
+            <h2 class="text-[#131612] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Account Details</h2>
+            <div class="p-4 grid grid-cols-[20%_1fr] gap-x-6">
+              <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dfe3dd] py-5">
+                <p class="text-[#6f816a] text-sm font-normal leading-normal">Full Name</p>
+                <p class="text-[#131612] text-sm font-normal leading-normal" id="accName">Sophia Clark</p>
+                <input id="accNameEdit" class="border rounded px-2 py-1 text-sm font-normal leading-normal" type="text" value="Sophia Clark" style="display:none;" />
+              </div>
+              <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dfe3dd] py-5">
+                <p class="text-[#6f816a] text-sm font-normal leading-normal">Email</p>
+                <p class="text-[#131612] text-sm font-normal leading-normal" id="accEmail">sophia.clark@email.com</p>
+                <input id="accEmailEdit" class="border rounded px-2 py-1 text-sm font-normal leading-normal" type="email" value="sophia.clark@email.com" style="display:none;" />
+              </div>
+              <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dfe3dd] py-5">
+                <p class="text-[#6f816a] text-sm font-normal leading-normal">Phone Number</p>
+                <p class="text-[#131612] text-sm font-normal leading-normal" id="accPhone">+1-555-123-4567</p>
+                <input id="accPhoneEdit" class="border rounded px-2 py-1 text-sm font-normal leading-normal" type="text" value="+1-555-123-4567" style="display:none;" />
+              </div>
+              <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dfe3dd] py-5">
+                <p class="text-[#6f816a] text-sm font-normal leading-normal">Date of Birth</p>
+                <p class="text-[#131612] text-sm font-normal leading-normal" id="accDob">1993-05-15</p>
+                <input id="accDobEdit" class="border rounded px-2 py-1 text-sm font-normal leading-normal" type="date" value="1993-05-15" style="display:none;" />
+              </div>
+              <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dfe3dd] py-5">
+                <p class="text-[#6f816a] text-sm font-normal leading-normal">Gender</p>
+                <p class="text-[#131612] text-sm font-normal leading-normal" id="accGender">Female</p>
+                <select id="accGenderEdit" class="border rounded px-2 py-1 text-sm font-normal leading-normal" style="display:none;">
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <h2 class="text-[#131612] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Booking History</h2>
+            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+              <a href="{{ url_for('my_bookings') }}">
+                <div class="flex items-center gap-4">
+                  <div class="text-[#131612] flex items-center justify-center rounded-lg bg-[#f2f4f1] shrink-0 size-12" data-icon="Calendar" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-96-88v64a8,8,0,0,1-16,0V132.94l-4.42,2.22a8,8,0,0,1-7.16-14.32l16-8A8,8,0,0,1,112,120Zm59.16,30.45L152,176h16a8,8,0,0,1,0,16H136a8,8,0,0,1-6.4-12.8l28.78-38.37A8,8,0,1,0,145.07,132a8,8,0,1,1-13.85-8A24,24,0,0,1,176,136,23.76,23.76,0,0,1,171.16,150.45Z"
+                      ></path>
+                    </svg>
+                  </div>
+                    <div class="flex flex-col justify-center">
+                      <p class="text-[#131612] text-base font-medium leading-normal line-clamp-1">My Bookings</p>
+                      <p class="text-[#6f816a] text-sm font-normal leading-normal line-clamp-2">View and manage your past and upcoming bookings</p>
+                    </div>
+                </div>
+              </a>
+              <div class="shrink-0">
+                <div class="text-[#131612] flex size-7 items-center justify-center" data-icon="CaretRight" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Toggle edit mode
+      const editBtn = document.getElementById('editProfileBtn');
+      const saveBtn = document.getElementById('saveProfileBtn');
+      editBtn.onclick = function() {
+        // Show input fields
+        document.getElementById('profile-info-view').style.display = 'none';
+        document.getElementById('profile-info-edit').style.display = 'flex';
+        document.getElementById('accName').style.display = 'none';
+        document.getElementById('accNameEdit').style.display = 'block';
+        document.getElementById('accEmail').style.display = 'none';
+        document.getElementById('accEmailEdit').style.display = 'block';
+        document.getElementById('accPhone').style.display = 'none';
+        document.getElementById('accPhoneEdit').style.display = 'block';
+        document.getElementById('accDob').style.display = 'none';
+        document.getElementById('accDobEdit').style.display = 'block';
+        document.getElementById('accGender').style.display = 'none';
+        document.getElementById('accGenderEdit').style.display = 'block';
+        editBtn.style.display = 'none';
+        saveBtn.style.display = 'inline-flex';
+      };
+      saveBtn.onclick = function() {
+        // Save values
+        const name = document.getElementById('accNameEdit').value;
+        const email = document.getElementById('accEmailEdit').value;
+        const phone = document.getElementById('accPhoneEdit').value;
+        const dob = document.getElementById('accDobEdit').value;
+        const gender = document.getElementById('accGenderEdit').value;
+        document.getElementById('accName').textContent = name;
+        document.getElementById('accEmail').textContent = email;
+        document.getElementById('accPhone').textContent = phone;
+        document.getElementById('accDob').textContent = dob;
+        document.getElementById('accGender').textContent = gender;
+        // Also update top profile info
+        document.getElementById('profileName').textContent = name;
+        document.getElementById('profileEmail').textContent = email;
+        // Hide input fields
+        document.getElementById('profile-info-view').style.display = 'flex';
+        document.getElementById('profile-info-edit').style.display = 'none';
+        document.getElementById('accName').style.display = 'block';
+        document.getElementById('accNameEdit').style.display = 'none';
+        document.getElementById('accEmail').style.display = 'block';
+        document.getElementById('accEmailEdit').style.display = 'none';
+        document.getElementById('accPhone').style.display = 'block';
+        document.getElementById('accPhoneEdit').style.display = 'none';
+        document.getElementById('accDob').style.display = 'block';
+        document.getElementById('accDobEdit').style.display = 'none';
+        document.getElementById('accGender').style.display = 'block';
+        document.getElementById('accGenderEdit').style.display = 'none';
+        editBtn.style.display = 'inline-flex';
+        saveBtn.style.display = 'none';
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,181 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link   
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>GARUDA Multi Sports Turf</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      .booking-block {
+        min-height: 160px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f2f4f1] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#131612]">
+            <img src="https://wepik.com/api/image/local/156660096/9f15956e-a7e4-4fdb-a469-becfafaf1b33?expires=1749182400&thumb=0&transparent=0&signature=b9d72c7431d37e2902812c45736d32dad7db516588cb2082020a89a6138761f2" alt="KARE Turf Logo" class="h-7 w-auto" />
+            <h2 class="text-[#131612] text-lg font-bold leading-tight tracking-[-0.015em]">GARUDA Multi Sports Turf</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#131612] text-sm font-medium leading-normal" href="{{ url_for('home') }}">Home</a>
+              <a class="text-[#131612] text-sm font-medium leading-normal" href="{{ url_for('my_bookings') }}">My Bookings</a>
+              <a class="text-[#131612] text-sm font-medium leading-normal" href="{{ url_for('contact') }}">Contact</a>
+            </div>
+            <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#f2f4f1] text-[#131612] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+            >
+              <div class="text-[#131612]" data-icon="Bell" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path
+                    d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"
+                  ></path>
+                </svg>
+              </div>
+            </button>
+            <a href="{{ url_for('profile') }}">
+              <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCm09Wqzcscvu5yMALvSOE-tppCtrIINSCijhCdZyQBkMyXa5ItKtugA85Oaf9Wsn-rs_D9KUIoI4-Umdw1mIv15kuy_mP1PsjnMxDV5JdkRoP-rdBMwS1FLzwinkVCMZLQakxKqlo9O21jfRkSkCuZ1nn47LHCyFo7TcenPnVS64Rg7S-xa2WD1DGrNvA1IfsH3eQ1R1XiMIaoDuc1Z7lI2vxNt3utZZWVSkOzUZHHuLvTnwhL1mwdDvegJ9VsqViVVt-pFL1zdeo");'
+              ></div>
+            </a>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex flex-wrap justify-between gap-3 p-4"><p class="text-[#131612] tracking-light text-[32px] font-bold leading-tight min-w-72">My Bookings</p></div>
+            <h3 class="text-[#131612] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Upcoming Bookings</h3>
+            <div class="p-4">
+              <div class="flex items-stretch justify-between gap-4 rounded-xl booking-block" data-sport="Football">
+                <div class="flex flex-[2_2_0px] flex-col gap-4">
+                  <div class="flex flex-col gap-1">
+                    <p class="text-[#6f816a] text-sm font-normal leading-normal">Booking ID: 123456</p>
+                    <p class="text-[#131612] text-base font-bold leading-tight">Football Turf - City Arena</p>
+                    <p class="text-[#6f816a] text-sm font-normal leading-normal">Date: 2024-03-15, Time: 18:00 - 20:00, Duration: 2 hours</p>
+                  </div>
+                  <button
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 flex-row-reverse bg-[#f2f4f1] text-[#131612] text-sm font-medium leading-normal w-fit"
+                  >
+                    <span class="truncate">View Details</span>
+                  </button>
+                </div>
+                <div class="sport-image"></div>
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex items-stretch justify-between gap-4 rounded-xl booking-block" data-sport="Cricket">
+                <div class="flex flex-[2_2_0px] flex-col gap-4">
+                  <div class="flex flex-col gap-1">
+                    <p class="text-[#6f816a] text-sm font-normal leading-normal">Booking ID: 789012</p>
+                    <p class="text-[#131612] text-base font-bold leading-tight">Cricket Turf - Sports Complex</p>
+                    <p class="text-[#6f816a] text-sm font-normal leading-normal">Date: 2024-03-20, Time: 16:00 - 19:00, Duration: 3 hours</p>
+                  </div>
+                  <button
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 flex-row-reverse bg-[#f2f4f1] text-[#131612] text-sm font-medium leading-normal w-fit"
+                  >
+                    <span class="truncate">View Details</span>
+                  </button>
+                </div>
+                <div class="sport-image"></div>
+              </div>
+            </div>
+            <h3 class="text-[#131612] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Past Bookings</h3>
+            <div class="p-4">
+              <div class="flex items-stretch justify-between gap-4 rounded-xl booking-block" data-sport="Football">
+                <div class="flex flex-[2_2_0px] flex-col gap-4">
+                  <div class="flex flex-col gap-1">
+                    <p class="text-[#6f816a] text-sm font-normal leading-normal">Booking ID: 345678</p>
+                    <p class="text-[#131612] text-base font-bold leading-tight">Football Turf - City Arena</p>
+                    <p class="text-[#6f816a] text-sm font-normal leading-normal">Date: 2024-02-28, Time: 19:00 - 21:00, Duration: 2 hours</p>
+                  </div>
+                  <button
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 flex-row-reverse bg-[#f2f4f1] text-[#131612] text-sm font-medium leading-normal w-fit"
+                  >
+                    <span class="truncate">View Details</span>
+                  </button>
+                </div>
+                <div class="sport-image"></div>
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex items-stretch justify-between gap-4 rounded-xl booking-block" data-sport="Cricket">
+                <div class="flex flex-[2_2_0px] flex-col gap-4">
+                  <div class="flex flex-col gap-1">
+                    <p class="text-[#6f816a] text-sm font-normal leading-normal">Booking ID: 901234</p>
+                    <p class="text-[#131612] text-base font-bold leading-tight">Cricket Turf - Sports Complex</p>
+                    <p class="text-[#6f816a] text-sm font-normal leading-normal">Date: 2024-02-15, Time: 17:00 - 20:00, Duration: 3 hours</p>
+                  </div>
+                  <button
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 flex-row-reverse bg-[#f2f4f1] text-[#131612] text-sm font-medium leading-normal w-fit"
+                  >
+                    <span class="truncate">View Details</span>
+                  </button>
+                </div>
+                <div class="sport-image"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="ticketModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+      <div style="background:white; padding:24px; border-radius:12px; max-width:90vw; max-height:90vh; display:flex; flex-direction:column; align-items:center;">
+        <img id="ticketImage" src="" alt="Ticket" style="max-width:400px; max-height:80vh; border-radius:8px;" />
+        <button onclick="document.getElementById('ticketModal').style.display='none'" style="margin-top:16px; padding:8px 24px; border-radius:8px; background:#f2f4f1; color:#131612; font-weight:bold;">Close</button>
+      </div>
+    </div>
+    <script>
+      // Map sport names to image paths
+      const sportImages = {
+        "Football": "/static/football.png",
+        "Cricket": "/static/cricket.png"
+      };
+
+      // For each booking block, set the correct image
+      document.querySelectorAll('.booking-block').forEach(block => {
+        const sport = block.getAttribute('data-sport');
+        const imgDiv = block.querySelector('.sport-image');
+        if (sportImages[sport]) {
+          imgDiv.style.backgroundImage = `url('${sportImages[sport]}')`;
+          imgDiv.style.backgroundSize = 'contain';
+          imgDiv.style.backgroundRepeat = 'no-repeat';
+          imgDiv.style.backgroundPosition = 'center';
+          imgDiv.style.width = '200px';
+          imgDiv.style.height = '200px';
+          imgDiv.style.borderRadius = '12px';
+          imgDiv.style.marginLeft = '16px';
+        }
+      });
+
+      // Map sport names to ticket image paths
+      const ticketImages = {
+        "Football": "/static/fticket.png",
+        "Cricket": "/static/cticket.png"
+      };
+
+      // Add click event listeners to all View Details buttons
+      document.querySelectorAll('.booking-block').forEach(block => {
+        const sport = block.getAttribute('data-sport');
+        const viewBtn = block.querySelector('button span.truncate');
+        if (viewBtn && viewBtn.textContent.trim() === 'View Details') {
+          viewBtn.parentElement.onclick = function() {
+            const ticketModal = document.getElementById('ticketModal');
+            const ticketImage = document.getElementById('ticketImage');
+            ticketImage.src = ticketImages[sport] || '';
+            ticketModal.style.display = 'flex';
+          };
+        }
+      });
+    </script>
+  </body>
+</html>

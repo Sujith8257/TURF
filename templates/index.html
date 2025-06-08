@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>GARUDA Multi Sports Turf</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f2f4f1] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#131612]">
+            <img src="https://wepik.com/api/image/local/156660096/9f15956e-a7e4-4fdb-a469-becfafaf1b33?expires=1749182400&thumb=0&transparent=0&signature=b9d72c7431d37e2902812c45736d32dad7db516588cb2082020a89a6138761f2" alt="KARE Turf Logo" class="h-7 w-auto" />
+            <h2 class="text-[#131612] text-lg font-bold leading-tight tracking-[-0.015em]">GARUDA Multi Sports Turf</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#131612] text-sm font-medium leading-normal" href="{{ url_for('home') }}">Home</a>
+        <a class="text-[#131612] text-sm font-medium leading-normal" href="{{ url_for('my_bookings') }}">My Bookings</a>
+
+              <a class="text-[#131612] text-sm font-medium leading-normal" href="{{ url_for('contact') }}">Contact Us</a>
+            </div>
+            <div class="flex gap-2">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#8cd279] text-[#131612] text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Sign Up</span>
+              </button>
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f2f4f1] text-[#131612] text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Login</span>
+              </button>
+            </div>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="@container">
+              <div class="@[480px]:p-4">
+                <div
+                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4"
+                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCYNvNxo0_NBDsvQjc1rjwmDgKtq31JtZx6PIVYbE5HVZMK4PACLY768kPdYvemSs9dcLHOmxiY39SOpWHLNZZu1KSstcHSkBDSemWPNqhB6qA5AAvNi7E0ZwVlx9gSLi2_Z3oRRUgo3gTIShTqYSK18bAlbjL8WtM8PKNeqFqCwrF_ZxWJZ3sm6AygMhmg2MqiA24hYbhQLwhN9sKF4Vm2PzBZBhCCiDKllxiQV0Mc6uaCj30mKKw6Te05ERSRaLiS2p_CzRWWIuU");'
+                >
+                  <div class="flex flex-col gap-2 text-center">
+                    <h1
+                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                    >
+                      Wanna Book a Slot ?
+                    </h1>
+                    <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                      Book your ideal football or cricket turf with ease. Check availability and secure your slot today.
+                    </h2>
+                  </div>
+                  <div class="flex items-center justify-center">
+                    <a
+                      href="{{ url_for('slot_booking') }}"
+                      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#8cd279] text-[#131612] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] hover:bg-[#7abf68] transition-all duration-300 group">
+                      <span class="truncate">Book a Slot</span>
+                      <span class="group-hover:translate-x-1 transition-transform duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="flex justify-center">
+          <div class="flex max-w-[960px] flex-1 flex-col">
+            <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
+              <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
+                <a class="text-[#6f816a] text-base font-normal leading-normal min-w-40" href="#">Privacy Policy</a>
+                <a class="text-[#6f816a] text-base font-normal leading-normal min-w-40" href="#">Terms of Service</a>
+                <a class="text-[#6f816a] text-base font-normal leading-normal min-w-40" href="{{ url_for('contact') }}">Contact Us</a>
+              </div>
+              <p class="text-[#6f816a] text-base font-normal leading-normal">@2025 GARUDA Multi Sports Turf. All rights reserved.</p>
+            </footer>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
