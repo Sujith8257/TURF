@@ -1,0 +1,390 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>Garuda Multi Sports Turf</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      // Calendar functionality
+      let currentDate = new Date();
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      
+      // Set today's date as selected by default
+      let selectedDay = new Date().getDate();
+      
+      // Dynamic calendar rendering
+      function renderCalendarGrid(year, month, selectedDay) {
+        const calendarGrid = document.getElementById('calendar-grid');
+        calendarGrid.innerHTML = '';
+        // Add weekday headers
+        const weekdays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+        const headerRow = document.createElement('div');
+        headerRow.className = 'grid grid-cols-7';
+        weekdays.forEach(day => {
+          const p = document.createElement('p');
+          p.className = 'text-[#131612] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5';
+          p.textContent = day;
+          headerRow.appendChild(p);
+        });
+        calendarGrid.appendChild(headerRow);
+
+        // Dates
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const startingDay = firstDay.getDay();
+        const monthLength = lastDay.getDate();
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        let date = 1;
+        for (let i = 0; i < 6; i++) {
+          const weekRow = document.createElement('div');
+          weekRow.className = 'grid grid-cols-7';
+          for (let j = 0; j < 7; j++) {
+            const cell = document.createElement('div');
+            cell.className = 'flex items-center justify-center h-12';
+            if (i === 0 && j < startingDay) {
+              weekRow.appendChild(cell);
+              continue;
+            }
+            if (date > monthLength) {
+              weekRow.appendChild(cell);
+              continue;
+            }
+            const button = document.createElement('button');
+            button.className = 'h-12 w-full text-[#131612] text-sm font-medium leading-normal hover:bg-[#f2f4f1] rounded-full transition-colors duration-200';
+            const div = document.createElement('div');
+            div.textContent = date;
+            div.className = 'flex items-center justify-center w-10 h-10 rounded-full';
+            
+            // Check if date is in the past
+            const currentDateCheck = new Date(year, month, date);
+            if (currentDateCheck < today) {
+              button.classList.add('opacity-50', 'cursor-not-allowed');
+              button.disabled = true;
+            } else {
+              button.onclick = () => {
+                selectDate(date);
+              };
+            }
+            
+            // Highlight selected date
+            if (date === selectedDay) {
+              div.classList.add('selected-date');
+            }
+            
+            button.appendChild(div);
+            cell.appendChild(button);
+            weekRow.appendChild(cell);
+            date++;
+          }
+          calendarGrid.appendChild(weekRow);
+        }
+      }
+
+      // Update calendar
+      function updateCalendar() {
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        document.querySelector('.calendar-month-label').textContent = `${monthNames[month]} ${year}`;
+        renderCalendarGrid(year, month, selectedDay);
+      }
+
+      // Select date
+      function selectDate(date) {
+        selectedDay = date;
+        updateCalendar();
+        // Add visual feedback for selected date
+        const selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), date);
+        document.querySelector('.text-center').textContent = `${monthNames[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
+      }
+
+      // Initialize calendar
+      document.addEventListener('DOMContentLoaded', () => {
+        // Set initial selected date display
+        const today = new Date();
+        document.querySelector('.calendar-month-label').textContent = `${monthNames[today.getMonth()]} ${today.getFullYear()}`;
+        
+        updateCalendar();
+        
+        // Add navigation handlers
+        document.querySelectorAll('.calendar-arrow')[0].onclick = () => {
+          currentDate.setMonth(currentDate.getMonth() - 1);
+          updateCalendar();
+        };
+        
+        document.querySelectorAll('.calendar-arrow')[1].onclick = () => {
+          currentDate.setMonth(currentDate.getMonth() + 1);
+          updateCalendar();
+        };
+      });
+
+      // Delegate click events for Edit and Remove actions
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('tbody').addEventListener('click', function(e) {
+          if (e.target && e.target.textContent.trim() === 'Edit') {
+            // Redirect to new_slot.html
+            window.location.href = 'new_slot.html';
+          }
+          if (e.target && e.target.textContent.trim() === 'Remove') {
+            // Remove the slot row
+            const tr = e.target.closest('tr');
+            if (tr) tr.remove();
+          }
+        });
+
+        // Optional: Make Edit/Remove look like links
+        document.querySelectorAll('td').forEach(td => {
+          if (td.textContent.includes('Edit') && td.textContent.includes('Remove')) {
+            td.innerHTML = td.innerHTML.replace(
+              /Edit \| Remove/,
+              `<span class="text-[#50d22c] cursor-pointer hover:underline">Edit</span> | <span class="text-[#e74c3c] cursor-pointer hover:underline">Remove</span>`
+            );
+          }
+        });
+      });
+    </script>
+    <style>
+      /* Calendar Styles */
+      #calendar-grid {
+        margin-top: 8px;
+        gap: 0px;
+      }
+      .calendar-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 0.5rem;
+      }
+      .calendar-arrow {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #131612;
+        padding: 0 8px;
+        line-height: 1;
+      }
+      .calendar-month-label {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #131612;
+        text-align: center;
+        flex: 1;
+      }
+      .selected-date {
+        background: #39d353 !important;
+        color: #fff !important;
+        border-radius: 9999px !important;
+        width: 2.25rem !important;
+        height: 2.25rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        font-size: 1rem;
+        margin: 0 auto;
+      }
+      #calendar-grid button {
+        background: none;
+        border: none;
+        outline: none;
+        color: #131612;
+        font-size: 1rem;
+        font-weight: 500;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 9999px;
+        transition: background 0.2s;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #calendar-grid button:not(:disabled):hover {
+        background: #f2f4f1;
+      }
+      #calendar-grid button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      #calendar-grid .grid-cols-7 {
+        gap: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f2f4f1] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#131612]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-[#131612] text-lg font-bold leading-tight tracking-[-0.015em]">Turf Admin</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#131612] text-sm font-medium leading-normal" href="dashboard.html">Dashboard</a>
+              <a class="text-[#131612] text-sm font-medium leading-normal" href="booking_management.html">Bookings</a>
+              <a class="text-[#131612] text-sm font-medium leading-normal" href="customers.html">Customers</a>
+            </div>
+            <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#f2f4f1] text-[#131612] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+            >
+              <div class="text-[#131612]" data-icon="Bell" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path
+                    d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"
+                  ></path>
+                </svg>
+              </div>
+            </button>
+            <div
+              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCqXIeoBn9LBKupWOovpXCrb_R4QTOEpx9huG9UUcYwv5W45acmk_zBo5DZM71cwHVB3Ia_q9NhqnRKzf3wZcD8stvJAh3tZMJiXwlwypKMhdpeXTJhBKOwK6yxrQs9z3ByfEwxKFgFjqQMRv1PIZUbSYDQvTX_fsReE18wo431uwfe1LgN2vs88sjuOhOPLtC7ywzK1y3fvRtG2YTL08XnCdJw3xcs1-_nkSOqWr9FNuA6isqs6dMx9aleJB3IgAoCN7tDTAbiW7s");'
+            ></div>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <p class="text-[#131612] tracking-light text-[32px] font-bold leading-tight min-w-72">Slot Management</p>
+              <a href="new_slot.html">
+                <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f2f4f1] text-[#131612] text-sm font-medium leading-normal"
+              >
+                <span class="truncate">Add New Slot</span>
+              </button>
+              </a>
+            </div>
+            <div class="pb-3">
+              <div class="flex border-b border-[#dfe3dd] px-4 gap-8">
+                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-[#131612] text-[#131612] pb-[13px] pt-4" href="#">
+                  <p class="text-[#131612] text-sm font-bold leading-normal tracking-[0.015em]">Calendar View</p>
+                </a>
+                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#6f816a] pb-[13px] pt-4" href="#">
+                  <p class="text-[#6f816a] text-sm font-bold leading-normal tracking-[0.015em]">List View</p>
+                </a>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-6 p-4">
+              <div class="flex flex-col items-center w-full">
+                <div class="flex items-center justify-between w-full max-w-xs mb-2 calendar-header">
+                  <button class="calendar-arrow" aria-label="Previous Month">
+                    <svg width="24" height="24" fill="none"><path d="M15.5 19 9.5 12l6-7" stroke="#131612" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <p class="calendar-month-label text-center"></p>
+                  <button class="calendar-arrow" aria-label="Next Month">
+                    <svg width="24" height="24" fill="none"><path d="M8.5 5l6 7-6 7" stroke="#131612" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+                <div id="calendar-grid" class="w-full max-w-xs"></div>
+              </div>
+            </div>
+            <h2 class="text-[#131612] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Available Slots</h2>
+            <div class="px-4 py-3 @container">
+              <div class="flex overflow-hidden rounded-xl border border-[#dfe3dd] bg-white">
+                <table class="flex-1">
+                  <thead>
+                    <tr class="bg-white">
+                      <th class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-120 px-4 py-3 text-left text-[#131612] w-[400px] text-sm font-medium leading-normal">Time</th>
+                      <th class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-240 px-4 py-3 text-left text-[#131612] w-[400px] text-sm font-medium leading-normal">
+                        Duration
+                      </th>
+                      <th class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-360 px-4 py-3 text-left text-[#131612] w-[400px] text-sm font-medium leading-normal">Sport</th>
+                      <th class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-480 px-4 py-3 text-left text-[#131612] w-[400px] text-sm font-medium leading-normal">Price</th>
+                      <th class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-600 px-4 py-3 text-left text-[#131612] w-60 text-[#6f816a] text-sm font-medium leading-normal">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-t border-t-[#dfe3dd]">
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-120 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">
+                        9:00 AM - 10:00 AM
+                      </td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-240 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">1 Hour</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-360 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">Football/Cricket</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-480 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">$50</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-600 h-[72px] px-4 py-2 w-60 text-[#6f816a] text-sm font-bold leading-normal tracking-[0.015em]">
+                        Edit | Remove
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#dfe3dd]">
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-120 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">
+                        10:00 AM - 12:00 PM
+                      </td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-240 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">2 Hours</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-360 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">Football/Cricket</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-480 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">$100</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-600 h-[72px] px-4 py-2 w-60 text-[#6f816a] text-sm font-bold leading-normal tracking-[0.015em]">
+                        Edit | Remove
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#dfe3dd]">
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-120 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">
+                        1:00 PM - 2:00 PM
+                      </td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-360 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">1 Hour</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-240 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">Football/Cricket</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-480 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">$50</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-600 h-[72px] px-4 py-2 w-60 text-[#6f816a] text-sm font-bold leading-normal tracking-[0.015em]">
+                        Edit | Remove
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#dfe3dd]">
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-120 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">
+                        3:00 PM - 5:00 PM
+                      </td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-360 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">2 Hours</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-240 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">Football/Cricket</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-480 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">$100</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-600 h-[72px] px-4 py-2 w-60 text-[#6f816a] text-sm font-bold leading-normal tracking-[0.015em]">
+                        Edit | Remove
+                      </td>
+                    </tr>
+                    <tr class="border-t border-t-[#dfe3dd]">
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-120 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">
+                        6:00 PM - 7:00 PM
+                      </td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-360 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">1 Hour</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-240 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">Football/Cricket</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-480 h-[72px] px-4 py-2 w-[400px] text-[#6f816a] text-sm font-normal leading-normal">$50</td>
+                      <td class="table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-600 h-[72px] px-4 py-2 w-60 text-[#6f816a] text-sm font-bold leading-normal tracking-[0.015em]">
+                        Edit | Remove
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <style>
+                          @container(max-width:120px){.table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-120{display: none;}}
+                @container(max-width:240px){.table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-240{display: none;}}
+                @container(max-width:360px){.table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-360{display: none;}}
+                @container(max-width:480px){.table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-480{display: none;}}
+                @container(max-width:600px){.table-ae60e83f-faeb-496c-b733-3df8290a4f1e-column-600{display: none;}}
+              </style>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
